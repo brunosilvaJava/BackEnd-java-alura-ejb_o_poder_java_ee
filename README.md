@@ -1,6 +1,4 @@
-# Curso Alura - EJB: O poder da Java EE Nível Avançado
-Curso Alura - EJB: O poder da Java EE
-Nível Avançado
+# Curso Alura - EJB: O poder da Java EE / Nível Avançado
 
 Aulas
 
