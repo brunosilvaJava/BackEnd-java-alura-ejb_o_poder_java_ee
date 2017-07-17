@@ -1,4 +1,4 @@
-# BackEnd-java-alura-ejb_o_poder_java_ee
+# Curso Alura - EJB: O poder da Java EE Nível Avançado
 Curso Alura - EJB: O poder da Java EE
 Nível Avançado
 
