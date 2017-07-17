@@ -1,0 +1,13 @@
+
+.metadada/
+.git/
+RemoteSystemsTempFiles/
+Livraria/.settings/
+Livraria/.metadata/
+Livraria/build/
+Livraria/target/
+
+*.jar
+*.project
+*.classpath
+*.class
