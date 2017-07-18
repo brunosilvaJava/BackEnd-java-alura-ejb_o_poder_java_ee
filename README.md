@@ -19,7 +19,7 @@ Aulas
 
 08 - Agendamento e EAR
 
-Apresentação do projeto
+## Apresentação do projeto
 
 A aplicação livraria usa JSF e Primefaces para definir a interface. 
 Há uma página de login: o login é admin a senha é pass. 
