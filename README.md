@@ -3,7 +3,7 @@
 Aulas
 
 01 - Introdução aos Enterprise Java Beans
-** Inversão de controle / Injeção de dependências pelo EJB
+>> Inversão de controle / Injeção de dependências pelo EJB
 
 02 - Ciclo de vida dos Session Beans
 03 - Integração do JPA com Pool e DataSource
