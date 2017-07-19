@@ -31,7 +31,7 @@ public class AutorBean {
 		return autor;
 	}
 	
-	public void cadastra() {
+	public void cadastra(){
 		this.autorService.salva(autor);
 	}
 	

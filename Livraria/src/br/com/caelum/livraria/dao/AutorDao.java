@@ -4,11 +4,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import br.com.caelum.exception.LivrariaException;
 import br.com.caelum.livraria.modelo.Autor;
 
 /*
@@ -96,8 +95,9 @@ public class AutorDao {
 	    System.out.println("AutorDao foi criado");
 	}
 
-	public void salva(Autor autor) {
+	public void salva(Autor autor) throws LivrariaException {
 		manager.persist(autor);
+		throw new LivrariaException();
 	}
 	
 	public List<Autor> todosAutores() {
