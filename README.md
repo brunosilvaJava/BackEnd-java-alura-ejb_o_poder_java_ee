@@ -13,6 +13,19 @@ Aulas
 
 05 - Lidando com Exceções
 
+> * EJBTransactionRollbackException causa System Exception.
+> * System Exception
+>> * Unchecked
+>> * Normalmente exceções de infra-estrutura
+>> * Rollback
+>> * Invalida o Session Bean e tira ele do Pool de objetos
+> * Application Exception
+>> * Checked
+>> * Relacionada ao domínio
+>> * Não causa rollback
+>> * Não invalida o Session Bean
+> * @ApplicationException reconfigura o padrão para Application Exceptions.
+
 06 - Novos serviços com Interceptadores
 
 07 - Integração com Web Services
