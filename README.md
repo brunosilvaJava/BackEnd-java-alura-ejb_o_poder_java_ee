@@ -1,6 +1,13 @@
 # Curso Alura - EJB: O poder da Java EE / Nível Avançado
 
-Aulas
+## Apresentação do projeto
+
+A aplicação livraria usa JSF e Primefaces para definir a interface. 
+Há uma página de login: o login é admin a senha é pass. 
+Após efetuado o login somos redirecionados para a página principal de aplicação. 
+Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade além do logout. 
+
+## Aulas
 
 01 - Introdução aos Enterprise Java Beans
 > Inversão de controle / Injeção de dependências pelo EJB
@@ -31,12 +38,3 @@ Aulas
 07 - Integração com Web Services
 
 08 - Agendamento e EAR
-
-## Apresentação do projeto
-
-A aplicação livraria usa JSF e Primefaces para definir a interface. 
-Há uma página de login: o login é admin a senha é pass. 
-Após efetuado o login somos redirecionados para a página principal de aplicação. 
-Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade além do logout. 
-
-
