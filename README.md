@@ -20,7 +20,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 05 - Lidando com Exceções
 
-> * EJBTransactionRollbackException causa System Exception.
+> * EJBTransactionRolledbackException causada por System Exception.
 > * System Exception
 >> * Unchecked
 >> * Normalmente exceções de infra-estrutura
