@@ -5,8 +5,8 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.modelo.Autor;
+import br.com.caelum.livraria.service.AutorService;
 
 @Model
 public class AutorBean {
@@ -25,18 +25,18 @@ public class AutorBean {
 	private Autor autor;
 	
 	@Inject // Injeção de dependências pelo EJB Container - Anotação CDI
-	private AutorDao dao;
+	private AutorService autorService;
 	
 	public Autor getAutor() {
 		return autor;
 	}
 	
 	public void cadastra() {
-		this.dao.salva(autor);
+		this.autorService.salva(autor);
 	}
 	
 	public List<Autor> getAutores() {
-		return this.dao.todosAutores();
+		return this.autorService.todosAutores();
 	}
 	
 }
