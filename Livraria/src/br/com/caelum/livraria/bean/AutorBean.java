@@ -2,7 +2,6 @@ package br.com.caelum.livraria.bean;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
@@ -22,10 +21,10 @@ public class AutorBean {
 	 * 
 	 */
 	
-	@Inject // Injeção de dependências pelo EJB Container - Anotação CDI
+	@Inject
 	private Autor autor;
 	
-	@EJB // Injeção de dependências pelo EJB Container - Anotação @EJB
+	@Inject // Injeção de dependências pelo EJB Container - Anotação CDI
 	private AutorDao dao;
 	
 	public Autor getAutor() {
@@ -34,7 +33,6 @@ public class AutorBean {
 	
 	public void cadastra() {
 		this.dao.salva(autor);
-		this.autor = new Autor();
 	}
 	
 	public List<Autor> getAutores() {
