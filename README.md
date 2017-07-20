@@ -10,7 +10,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 ## Aulas ##
 
 - ### 01 - Introdução aos Enterprise Java Bean ###
-> * Inversão de controle / Injeção de dependências pelo EJB
+   * Inversão de controle / Injeção de dependências pelo EJB
 
 - ### 02 Ciclo de vida dos Session Beans ###
 
@@ -20,29 +20,29 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 - ###  05 - Lidando com Exceções ###
 
-> * EJBTransactionRolledbackException causada por System Exception.
-> * System Exception
->> * Unchecked
->> * Normalmente exceções de infra-estrutura
->> * Rollback
->> * Invalida o Session Bean e tira ele do Pool de objetos
-> * Application Exception
->> * Checked
->> * Relacionada ao domínio
->> * Não causa rollback
->> * Não invalida o Session Bean
-> * @ApplicationException reconfigura o padrão para Application Exceptions.
+  * EJBTransactionRolledbackException causada por System Exception.
+  * System Exception
+     * Unchecked
+     * Normalmente exceções de infra-estrutura
+     * Rollback
+     * Invalida o Session Bean e tira ele do Pool de objetos
+   * Application Exception
+     * Checked
+     * Relacionada ao domínio
+     * Não causa rollback
+     * Não invalida o Session Bean
+   * @ApplicationException reconfigura o padrão para Application Exceptions.
 
 - ### 06 - Novos serviços com Interceptadores ###
 
-> * @AroundInvoke
->> * Anotação para informar o método interceptador
->> * Método interceptador retorna Object
->> * Método recebe como parâmetro InvocationContext, este contém informações do método interceptado e o método proceed que prossegue com a execução do método interceptado e retorna o mesmo que ele
-> * @Interceptors
->> * Anotação para informar qual classe terá seus métodos interceptados, ou qual método.
->> * Recebe um Array de classes interceptadoras
->> * A configuração pode ser feita via xml, melhor nos casos onde o interceptador é utilizado em várias classes
+ * @AroundInvoke
+   * Anotação para informar o método interceptador
+   * Método interceptador retorna Object
+   * Método recebe como parâmetro InvocationContext, este contém informações do método interceptado e o método proceed que prossegue com a execução do método interceptado e retorna o mesmo que ele
+ * @Interceptors
+   * Anotação para informar qual classe terá seus métodos interceptados, ou qual método.
+   * Recebe um Array de classes interceptadoras
+   * A configuração pode ser feita via xml, melhor nos casos onde o interceptador é utilizado em várias classes
 
 - ### 07 - Integração com Web Services ###
 
