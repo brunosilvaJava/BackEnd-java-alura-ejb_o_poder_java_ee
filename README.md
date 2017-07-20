@@ -35,6 +35,15 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 06 - Novos serviços com Interceptadores
 
+> * @AroundInvoke
+>> * Anotação para informar o método interceptador
+>> * Método interceptador retorna Object
+>> * Método recebe como parâmetro InvocationContext, este contém informações do método interceptado e o método proceed que prossegue com a execução do método interceptado e retorna o mesmo que ele
+> * @Interceptors
+>> * Anotação para informar qual classe terá seus métodos interceptados, ou qual método.
+>> * Recebe um Array de classes interceptadoras
+>> * A configuração pode ser feita via xml, melhor nos casos onde o interceptador é utilizado em várias classes
+
 07 - Integração com Web Services
 
 08 - Agendamento e EAR
