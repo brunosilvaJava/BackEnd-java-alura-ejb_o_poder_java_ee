@@ -7,18 +7,18 @@ Há uma página de login: o login é admin a senha é pass.
 Após efetuado o login somos redirecionados para a página principal de aplicação. 
 Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade além do logout. 
 
-## Aulas
+## Aulas ##
 
-01 - Introdução aos Enterprise Java Beans
-> Inversão de controle / Injeção de dependências pelo EJB
+- ### 01 - Introdução aos Enterprise Java Bean ###
+> * Inversão de controle / Injeção de dependências pelo EJB
 
-02 - Ciclo de vida dos Session Beans
+- ### 02 Ciclo de vida dos Session Beans ###
 
-03 - Integração do JPA com Pool e DataSource
+- ### 03 - Integração do JPA com Pool e DataSource ###
 
-04 - Gerenciamento de Transações com JTA
+- ### 04 - Gerenciamento de Transações com JTA ###
 
-05 - Lidando com Exceções
+- ###  05 - Lidando com Exceções ###
 
 > * EJBTransactionRolledbackException causada por System Exception.
 > * System Exception
@@ -33,7 +33,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 >> * Não invalida o Session Bean
 > * @ApplicationException reconfigura o padrão para Application Exceptions.
 
-06 - Novos serviços com Interceptadores
+- ### 06 - Novos serviços com Interceptadores ###
 
 > * @AroundInvoke
 >> * Anotação para informar o método interceptador
@@ -44,6 +44,6 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 >> * Recebe um Array de classes interceptadoras
 >> * A configuração pode ser feita via xml, melhor nos casos onde o interceptador é utilizado em várias classes
 
-07 - Integração com Web Services
+- ### 07 - Integração com Web Services ###
 
-08 - Agendamento e EAR
+- ### 08 - Agendamento e EAR ###
