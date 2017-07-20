@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.com.caelum.exception.LivrariaException;
+import br.com.caelum.livraria.interceptador.LogInterceptador;
 import br.com.caelum.livraria.modelo.Autor;
 
 /*
@@ -85,6 +87,7 @@ import br.com.caelum.livraria.modelo.Autor;
  * */
 
 @Stateless
+//@Interceptors({LogInterceptador.class})
 public class AutorDao {
 
 	@PersistenceContext
@@ -92,19 +95,21 @@ public class AutorDao {
 	
 	@PostConstruct // método callback 
 	void aposCriacao() {
-	    System.out.println("AutorDao foi criado");
 	}
 
 	public void salva(Autor autor) throws LivrariaException {
+		System.out.println("AutorDao_salva");
 		manager.persist(autor);
-		throw new LivrariaException();
+		//throw new LivrariaException();
 	}
 	
 	public List<Autor> todosAutores() {
+		System.out.println("AutorDao_todosAutores");
 		return manager.createQuery("select a from Autor a", Autor.class).getResultList();
 	}
 
 	public Autor buscaPelaId(Integer autorId) {
+		System.out.println("AutorDao_buscaPelaId");
 		return manager.find(Autor.class, autorId);
 	}
 	

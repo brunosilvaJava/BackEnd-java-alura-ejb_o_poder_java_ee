@@ -15,10 +15,12 @@ public class LivroDao {
 	private EntityManager manager;
 	
 	public void salva(Livro livro) {
+		System.out.println("LivroDao_salva");
 		manager.persist(livro);
 	}
 	
 	public List<Livro> todosLivros() {
+		System.out.println("LivroDao_todosLivros");
 		return manager.createQuery("select a from Livro a", Livro.class).getResultList();
 	}
 	

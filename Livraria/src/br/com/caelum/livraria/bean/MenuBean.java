@@ -21,16 +21,19 @@ public class MenuBean implements Serializable{
 	}
 	
 	public String paginaLivros() {
+		System.out.println("MenuBean_paginaLivros");
 		this.index = 0;
 		return "livros?faces-redirect=true";
 	}
 	
 	public String paginaAutores() {
+		System.out.println("MenuBean_paginaAutores");
 		this.index = 1;
 		return "autores?faces-redirect=true";
 	}
 
 	public String paginaLogin() {
+		System.out.println("MenuBean_paginaLogin");
 		this.index = 0;
 		return "login?faces-redirect=true";
 	}

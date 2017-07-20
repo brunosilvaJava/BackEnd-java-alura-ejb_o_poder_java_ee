@@ -1,0 +1,43 @@
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+ http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+ version="3.1">
+
+	 <!-- Define lista de interceptadores  -->
+	 <interceptors>
+	 
+	 	<interceptor>
+	 		<interceptor-class>
+				br.com.caelum.livraria.interceptador.LogInterceptador
+			</interceptor-class>
+	 	</interceptor>
+	 
+	 	<interceptor>
+	 		<interceptor-class>
+				br.com.caelum.livraria.interceptador.AuditoriaInterceptador
+			</interceptor-class>
+	 	</interceptor>
+	 	
+	 </interceptors>
+	 
+	 <!-- Define onde os interceptadores são aplicados -->
+	 <assembly-descriptor>
+	 
+		<interceptor-binding>
+			<ejb-name>*</ejb-name> <!-- * associa o interceptador para todos os EJBs -->
+			<interceptor-class>
+				br.com.caelum.livraria.interceptador.LogInterceptador
+			</interceptor-class>
+		</interceptor-binding>
+	 
+		<interceptor-binding>
+			<ejb-name>*</ejb-name> <!-- * associa o interceptador para todos os EJBs -->
+			<interceptor-class>
+				br.com.caelum.livraria.interceptador.AuditoriaInterceptador
+			</interceptor-class>
+		</interceptor-binding>
+		
+	</assembly-descriptor>
+
+</ejb-jar>

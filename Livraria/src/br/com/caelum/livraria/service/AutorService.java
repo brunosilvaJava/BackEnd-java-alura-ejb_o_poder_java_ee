@@ -15,10 +15,12 @@ public class AutorService {
     AutorDao dao;
 
     public void salva(Autor autor) {
+    	System.out.println("AutorService_salva");
         this.dao.salva(autor);
     }
 
     public List<Autor> todosAutores() {
+    	System.out.println("AutorService_todosAutores");
         return this.dao.todosAutores();
     }
     

@@ -22,6 +22,8 @@ public class LivroBean {
 
 	public void cadastra() {
 		
+		System.out.println("LivroBean_cadastra");
+		
 		livroService.cadastra(livro, autorId);
 		
 		this.livro = new Livro();
