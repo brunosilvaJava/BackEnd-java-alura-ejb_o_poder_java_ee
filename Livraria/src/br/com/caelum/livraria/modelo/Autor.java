@@ -15,6 +15,12 @@ public class Autor {
 	
 	public Autor() {
 	}
+	
+	public static void teste() {
+
+		System.out.println("testando outro método");
+
+	}
 
 	public Autor(Integer id, String nome) {
 		this.id = id;

@@ -27,7 +27,6 @@ public class Banco {
 	
 	@PostConstruct
 	void aposCriacao() {
-	    System.out.println("Banco");
 	}
 
 	public void save(Livro livro) {

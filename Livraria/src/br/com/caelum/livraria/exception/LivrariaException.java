@@ -1,4 +1,4 @@
-package br.com.caelum.exception;
+package br.com.caelum.livraria.exception;
 
 import javax.ejb.ApplicationException;
 
