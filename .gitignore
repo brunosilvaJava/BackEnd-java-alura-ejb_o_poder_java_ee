@@ -2,7 +2,7 @@
 .metadada/
 .git/
 RemoteSystemsTempFiles/
-Livraria/.settings/
+.settings/
 Livraria/.metadata/
 Livraria/build/
 Livraria/target/
