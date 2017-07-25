@@ -3,9 +3,9 @@
 .git/
 RemoteSystemsTempFiles/
 .settings/
-Livraria/.metadata/
-Livraria/build/
-Livraria/target/
+.metadata/
+build/
+target/
 
 *.jar
 *.project
