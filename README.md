@@ -116,11 +116,11 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
    	* @Startup
 	* Por padrão um EJB é carregado sob demanda (lazy), mas através da anotação ***@Startup*** podemos definir que queremos usar o Singleton Bean desde o início da aplicação:
 	
-	```java
-	@Singleton //do package javax.ejb
-	@Startup
-	public class MeuServico {
-	```
+		```java
+		@Singleton //do package javax.ejb
+		@Startup
+		public class MeuServico {
+		```
 	
    * **Session Bean Stateful (SBSF)**
    	* Parecido com o objeto HttpSession do mundo de Servlets, é exclusivo do cliente
