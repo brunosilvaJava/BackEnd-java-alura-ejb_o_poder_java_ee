@@ -108,24 +108,24 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 		```
 	
    * **Session Bean Singleton**
-     	* @Singleton -> Especificação EJB 3.1
-	* Garante que haverá somente uma instância do Session Bean
-   	* Tipicamente usado para inicializar alguma configuração ou agendar algum serviço, coisas que só fazem sentido no início da aplicação.
+		* @Singleton -> Especificação EJB 3.1
+		* Garante que haverá somente uma instância do Session Bean
+		* Tipicamente usado para inicializar alguma configuração ou agendar algum serviço, coisas que só fazem sentido no início da aplicação.
 	
    * **Eager Initialization**   
-   	* @Startup
-	* Por padrão um EJB é carregado sob demanda (lazy), mas através da anotação ***@Startup*** podemos definir que queremos usar o Singleton Bean desde o início da aplicação:
+		* @Startup
+		* Por padrão um EJB é carregado sob demanda (lazy), mas através da anotação ***@Startup*** podemos definir que queremos usar o Singleton Bean desde o início da aplicação:
 	
-		```java
-		@Singleton //do package javax.ejb
-		@Startup
-		public class MeuServico {
-		```
+			```java
+			@Singleton //do package javax.ejb
+			@Startup
+			public class MeuServico {
+			```
 	
    * **Session Bean Stateful (SBSF)**
-   	* Parecido com o objeto HttpSession do mundo de Servlets, é exclusivo do cliente
-	* Pouco usado. Isto porque normalmente se usa o objeto HttpSession para guardar dados do cliente 
-   	* Não tem pool de conexão
+		* Parecido com o objeto HttpSession do mundo de Servlets, é exclusivo do cliente
+		* Pouco usado. Isto porque normalmente se usa o objeto HttpSession para guardar dados do cliente
+		* Não tem pool de conexão
 
 
 - ### 03 - Integração do JPA com Pool e DataSource ###
