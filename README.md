@@ -97,15 +97,15 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
       * O EJB Container automaticamente fornece um pool de objetos que gerencia a quantidade do Session Beans.
       * A configuração desse pool se encontra no arquivo de configuração do servidor de aplicação -> _standalone.xml_
       * pool -> Dentro dessa seção há um elemento <strict-max-pool ... >, para os Stateless Session Beans (name="slsb-strict-max-pool") que controla o número máximo de EJBs no pool (max-pool-size="20"), nesse caso são 20 instâncias.
-	```xml
-	<pools>
-		<bean-instance-pools>
-			<strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
-			<!-- max-pool-size -> Define a quantidade de objetos no pool -->
-			<!-- outros elementos omitidos -->
-		</bean-instance-pools>
-	</pools>
-	```
+		```xml
+		<pools>
+			<bean-instance-pools>
+				<strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
+				<!-- max-pool-size -> Define a quantidade de objetos no pool -->
+				<!-- outros elementos omitidos -->
+			</bean-instance-pools>
+		</pools>
+		```
 	
    * **Session Bean Singleton**
      	* @Singleton -> Especificação EJB 3.1
