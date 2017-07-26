@@ -9,14 +9,14 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 ## Aulas
 
-* [01 - Introdução aos Enterprise Java Bean](#01-introdução-aos-enterprise-java-bean)
-* [02 - Ciclo de vida dos Session Beans](#02-ciclo_de_vida_dos_session_beans)
-* [03 - Integração-do-JPA-com-Pool-e-DataSource](#03-integração-do-jpa-com-pool-e-dataSource)
-* [04 - Gerenciamento-de-Transações-com-JTA](#04-gerenciamento-de-transações-com-jta)
-* [05 - Lidando-com-Exceções](#05-lidando-com-exceções)
-* [06 - Novos-serviços-com-Interceptadores](#06-Novos-serviços-com-interceptadores)
-* [07 - Integração-com-Web-Services](#07-integração-com-web-services)
-* [08 - Agendamento-e-EAR](#08-agendamento-e-ear)
+* [01 - Introdução aos Enterprise Java Bean](#01---introdução-aos-enterprise-java-bean)
+* [02 - Ciclo de vida dos Session Beans](#02---ciclo_de_vida_dos_session_beans)
+* [03 - Integração do JPA com Pool e DataSource](#03---integração-do-jpa-com-pool-e-dataSource)
+* [04 - Gerenciamento de Transações com JTA](#04---gerenciamento-de-transações-com-jta)
+* [05 - Lidando com Exceções](#05---lidando-com-exceções)
+* [06 - Novos serviços com Interceptadores](#06---Novos-serviços-com-interceptadores)
+* [07 - Integração com Web Services](#07---integração-com-web-services)
+* [08 - Agendamento e EAR](#08---agendamento-e-ear)
 
 - ### 01 - Introdução aos Enterprise Java Bean
     
