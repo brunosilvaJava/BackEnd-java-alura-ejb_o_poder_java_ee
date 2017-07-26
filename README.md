@@ -260,7 +260,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 				> Como o comportamento transacional do método pode variar, você deve usar o atributo Supports com cuidado. 
 			
 			* **Never**
-				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança RemoteException. 
+				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança **```RemoteException```**. 
 				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o método.
 			
@@ -275,14 +275,14 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 				| Required | T1 | T1 |
 				| RequiresNew | None | T2 |
 				| RequiresNew | T1 | T2 |
-				| Mandatory | None | Error |
+				| Mandatory | None | Error TransactionRequiredException |
 				| Mandatory | T1 | T1 |
 				| NotSupported | None | None |
 				| NotSupported | T1 | None |
 				| Supports | None | None |
 				| Supports | T1 | T1 |
 				| Never | None | None |
-				| Never | T1 | Error |
+				| Never | T1 | Error RemoteException |
 	
    			* [**Para saber mais** - Container-Managed Transactions](http://docs.oracle.com/javaee/6/tutorial/doc/bncij.html)
 
