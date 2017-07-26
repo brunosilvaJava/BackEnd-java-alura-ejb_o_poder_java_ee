@@ -3,7 +3,7 @@
 ## Apresentação do projeto
 
 A aplicação livraria usa JSF e Primefaces para definir a interface. 
-Há uma página de login: o login é admin a senha é pass. 
+Há uma página de login. 
 Após efetuado o login somos redirecionados para a página principal de aplicação. 
 Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade além do logout. 
 
@@ -144,6 +144,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 ### 03 - Integração do JPA com Pool e DataSource [↑](#aulas)
 	
    * **Configuração**
+   
    		* Não configurar os dados de conexão no **```persistence.xml```** (JPA). O EJB Container irá disponibilizar um serviço para realizar a conexão.
 		* Uma conexão é feita através de um driver connector, portanto é preciso registrar o driver do banco MySQL como módulo no servidor de aplicação, este módulo consiste de um arquivo XML e um JAR do connector.
 		* Internamente o servidor de aplicação organiza seus módulos em pacotes. Dentro da pasta modules/com criar uma nova pasta mysql e dentro dela uma pasta main. Dentro da pasta main colocar o arquivo XML e o JAR.
@@ -181,18 +182,42 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 
 ### 04 - Gerenciamento de Transações com JTA [↑](#aulas)
-
+	
+   * **Transação JTA**
+		* JTA (Java Transaction API) é um padrão JavaEE que se preocupa com o gerenciamento da transação dentro de um servidor JavaEE.
+		* Configurado no **```<jta-data-source>```** do **```persistence.xml```**.
+		* O EJB Container automaticamente abre e consolida a transação sem ser necessário deixar isso explicito no código. 
+		* É ilegal chamar getTransaction() dentro do EJB Container.
+	
+   * **Gerenciamento da transação com JTA**
+		* O JTA é a forma padrão de gerenciar a transação dentro do servidor JavaEE e já funciona sem nenhuma configuração. Este padrão se chama _CONTAINER MANAGED TRANSACTION (CMT)_. 
+		* @TransactionManagement -> Gerenciamento pelo _CONTAINER (default)_:
+		```java
+			@Stateless
+			@TransactionManagement(TransactionManagementType.CONTAINER) // opcional, apenas para fins didáticos
+			public class AutorDao {
+		```
+		* @TransactionAttribute -> Transação do método é _REQUIRED (default)_
+		```java
+			@TransactionAttribute(TransactionAttributeType.REQUIRED) //opcional, apenas para fins didáticos
+			public void salva(Autor autor) {
+		```
+		* É importante ressaltar que o tipo de gerenciamento CONTAINER e o atributo REQUIRED já é o padrão adotado para um Session Bean, então não é necessário configurar. Ou seja, ao testar e republicar a aplicação, tudo deve continuar funcionando.
+	
+   * **TransactionAttribute**
+		* Através da anotação @TransactionAttribute, temos acesso a outras configurações: 
+			> MANDATORY
 
 ###  05 - Lidando com Exceções [↑](#aulas)
 
   * **EJBTransactionRolledbackException**
-  		* Causada por System Exception.
+  	* Causada por System Exception.
   
   * **System Exception**
-		* Unchecked
-		* Normalmente exceções de infra-estrutura
-		* Rollback
-		* Invalida o Session Bean e tira ele do Pool de objetos
+  	* Unchecked
+	* Normalmente exceções de infra-estrutura
+	* Rollback
+	* Invalida o Session Bean e tira ele do Pool de objetos
      
    * **Application Exception**
 		* Checked
@@ -205,12 +230,12 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 ### 06 - Novos serviços com Interceptadores [↑](#aulas)
 
-   * @AroundInvoke
+   * **@AroundInvoke**
      * Anotação para informar o método interceptador
      * Método interceptador retorna Object
      * Método recebe como parâmetro InvocationContext, este contém informações do método interceptado e o método proceed que prossegue com a execução do método interceptado e retorna o mesmo que ele
      
-   * @Interceptors
+   * **@Interceptors**
      * Anotação para informar qual classe terá seus métodos interceptados, ou qual método.
      * Recebe um Array de classes interceptadoras
      * A configuração pode ser feita via xml, melhor nos casos onde o interceptador é utilizado em várias classes
