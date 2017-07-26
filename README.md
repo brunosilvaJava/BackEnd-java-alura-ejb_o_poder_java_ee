@@ -34,11 +34,11 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 - ### 02 Ciclo de vida dos Session Beans ###
 
    * **Pós-Construtor**
-      * Assim que o EJB Container cria e inicializa o Session Bean, o método anotado com @PostConstruct é executado. Esse tipo de método ligado ao ciclo de vida do Session Bean também é chamado de Callback. _Na verdade não é bem assim..._
+      * ~~Assim que o EJB Container cria e inicializa o Session Bean, o método anotado com @PostConstruct é executado~~. Esse tipo de método ligado ao ciclo de vida do Session Bean também é chamado de Callback. _Na verdade não é bem assim..._
       * [**Para saber mais**](https://pt.stackoverflow.com/questions/58403/qual-a-diferen%C3%A7a-entre-postconstruct-e-o-construtor):
          Ao usar frameworks que gerenciam o ciclo de vida de suas classes, como é o caso do Spring, 
          é sempre importante entender que uma instância gerenciada pelo framework não é uma instância qualquer.
-         Uma instância gerenciada pelo Spring é chamda de Spring Bean e não é um objeto comum. Ele agora tem superpoderes.
+         Uma instância gerenciada pelo Spring é chamda de Spring Bean e não é um objeto comum. Ele agora tem 'superpoderes'.
          
          ***Instância Comum vs. Spring Bean***
          
