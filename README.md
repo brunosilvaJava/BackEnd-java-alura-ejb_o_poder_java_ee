@@ -9,7 +9,10 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 ## Aulas ##
 
-- ### 01 - Introdução aos Enterprise Java Bean ###
+* [01 - Introdução aos Enterprise Java Bean](#01-Introdução-aos-Enterprise-Java-Bean)
+* [Versions 3.x.x](#versions-3xx)
+
+### 01 - Introdução aos Enterprise Java Bean
     
     * **Servidor de Aplicação**
        * A tarefa de um servidor de aplicações é livrar o desenvolvedor de preocupações como: segurança na aplicação, conecção e persistência das informações no banco de dados, acesso a serviços, etc, e fornecer uma infra-estrutura pronta para que o desenvolvedor possa aproveitar. Ou seja, não é a aplicação que vai gerenciar a transação, a conexão com o banco de dados ou se preocupar com o agendamento de tarefas. A inversão de controle (IoC) faz com que o servidor de aplicação cuide dessas atividades.
@@ -30,7 +33,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
       * @Inject -> Especificação CDI
       
       
-      
+# Versions 3.x.x
 - ### 02 Ciclo de vida dos Session Beans ###
 
    * **Pós-Construtor**
