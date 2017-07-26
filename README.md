@@ -18,6 +18,8 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 * [07 - Integração com Web Services](#07---integração-com-web-services-)
 * [08 - Agendamento e EAR](#08---agendamento-e-ear-)
 
+=======================================================
+
 ### 01 - Introdução aos Enterprise Java Bean [↑](#aulas)
 
    * **Servidor de Aplicação**
@@ -38,6 +40,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
    * **Injeção de dependência**
       * @Inject -> Especificação CDI
       
+=======================================================
 
 ### 02 - Ciclo de vida dos Session Beans [↑](#aulas)
 
@@ -140,6 +143,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 		* Pouco usado. Isto porque normalmente se usa o objeto HttpSession para guardar dados do cliente
 		* Não tem pool de conexão
 
+=======================================================
 
 ### 03 - Integração do JPA com Pool e DataSource [↑](#aulas)
 	
@@ -180,6 +184,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
    * **@PersistenceContext**
 		* Quando injetamos um EntityManager não podemos utilizar a anotação @Inject. Nesse caso, o Contexts and Dependency Injection (CDI), outra especificação com o foco na injeção de dependência, buscaria o EntityManager. No entanto não encontraria o objeto e causaria uma exceção. Como o EJB Container administrará o JPA, é preciso usar uma anotação especifica do mundo EJB, nesse caso @PersistenceContext.
 
+=======================================================
 
 ### 04 - Gerenciamento de Transações com JTA [↑](#aulas)
 	
@@ -281,6 +286,8 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 	
    			* [**Para saber mais** - Container-Managed Transactions](http://docs.oracle.com/javaee/6/tutorial/doc/bncij.html)
 
+=======================================================
+
 ###  05 - Lidando com Exceções [↑](#aulas)
 
   * **EJBTransactionRolledbackException**
@@ -301,6 +308,8 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
    * **@ApplicationException**
    		* Reconfigura o padrão para Application Exceptions.
 
+=======================================================
+
 ### 06 - Novos serviços com Interceptadores [↑](#aulas)
 
    * **@AroundInvoke**
@@ -313,6 +322,10 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
      * Recebe um Array de classes interceptadoras
      * A configuração pode ser feita via xml, melhor nos casos onde o interceptador é utilizado em várias classes
 
+=======================================================
+
 ### 07 - Integração com Web Services [↑](#aulas)
+
+=======================================================
 
 ### 08 - Agendamento e EAR [↑](#aulas)
