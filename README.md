@@ -11,6 +11,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 * [01 - Introdução aos Enterprise Java Bean](#01-Introdução-aos-Enterprise-Java-Bean)
 * [Versions 3.x.x](#versions-3xx)
+[3.5.x](#versions-35x)
 
 ### 01 - Introdução aos Enterprise Java Bean
     
@@ -32,7 +33,8 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
    * **Injeção de dependência**
       * @Inject -> Especificação CDI
       
-      
+
+## Versions 3.5.x
 # 02 Ciclo de vida dos Session Beans
 - ### 02 Ciclo de vida dos Session Beans ###
 
