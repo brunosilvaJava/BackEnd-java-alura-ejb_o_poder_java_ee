@@ -202,7 +202,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 			@TransactionAttribute(TransactionAttributeType.REQUIRED) //opcional, apenas para fins didáticos
 			public void salva(Autor autor) {
 		```
-		* É importante ressaltar que o tipo de gerenciamento CONTAINER e o atributo REQUIRED já é o padrão adotado para um Session Bean, então não é necessário configurar. Ou seja, ao testar e republicar a aplicação, tudo deve continuar funcionando.
+		* É importante ressaltar que o tipo de gerenciamento CONTAINER e o atributo REQUIRED já é o padrão adotado para um Session Bean, então não é necessário configurar.
 	
    * **TransactionAttribute**
    
@@ -212,38 +212,51 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 		
 		* Através da anotação @TransactionAttribute, é definido o atributo de transação: 
 			
-			* **Required**
-				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o método será executado dentro da transação do cliente. Se o cliente não estiver associado a uma transação, o contêiner iniciará uma nova transação antes de executar o método.
-				> O atributo Obrigatório é o atributo de transação implícito para todos os métodos do bean da empresa em execução com demarcação de transações gerenciadas por contêiner. Normalmente, você não configura o atributo Obrigatório, a menos que seja necessário substituir outro atributo de transação. Como os atributos da transação são declarativos, você pode alterá-los facilmente mais tarde. 
+			* **Required** _(Default)_
+				> **a.** Se o contêiner **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o method-B será executado dentro da **MESMA** transação do method-A. 
+				>
+				> **b.** Se o contêiner **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o contêiner **CRIA** uma transação antes de executar method-B.
+				>
+				> O atributo Required é o atributo de transação implícito para todos os métodos do bean da empresa em execução com demarcação de transações gerenciadas por contêiner. Normalmente, você não configura o atributo Required, a menos que seja necessário substituir outro atributo de transação. Como os atributos da transação são declarativos, você pode alterá-los facilmente mais tarde. 
 			
 			* **RequiresNew**
-				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o contêiner segue as seguintes etapas:
-				    1. Suspende a transação do cliente
+				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container segue as seguintes etapas:
+				    1. Suspende a transação do method-A
 				    2. Inicia uma nova transação
-				    3. Delega a chamada para o método
-				    4. Retoma a transação do cliente após o método ser concluído 
-
-				> Se o cliente não estiver associado a uma transação, o contêiner iniciará uma nova transação antes de executar o método.
+				    3. Delega a chamada para o method-B
+				    4. Retoma a transação do method-A após o method-B ser concluído 
+				>
+				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container **CRIA** uma transação antes de executar method-B.
 				> Você deve usar o atributo RequiresNew quando quiser garantir que o método sempre seja executado dentro de uma nova transação. 
 			
 			* **Mandatory**
-				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o método será executado dentro da transação do cliente. Se o cliente não estiver associado a uma transação, o contêiner lança uma **```TransactionRequiredException```**.
+				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o method-B será executado dentro da **MESMA** transação do method-A.
+				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança uma **```TransactionRequiredException```**.
 				> Use o atributo Mandatory se o método do enterprise bean deve usar a transação do cliente.
 			
 			* **NotSupported**
-				> Se o cliente estiver executando dentro de uma transação e invoca o método do bean da empresa, o contêiner suspende a transação do cliente antes de invocar o método. Após o método ter concluído, o contêiner retoma a transação do cliente.
-	Se o cliente não estiver associado a uma transação, o contêiner não iniciará uma nova transação antes de executar o método.
+				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container segue as seguintes etapas:
+				    1. Suspende a transação do method-A
+				    2. Delega a chamada para o method-B, sem abrir uma transação
+				    4. Retoma a transação do method-A após o method-B ser concluído 
+				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o method-B.
 				> Use o atributo NotSupported para métodos que não precisam de transações. Como as transações envolvem sobrecarga, esse atributo pode melhorar o desempenho. 
 			
 			* **Supports**
-				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o método será executado dentro da transação do cliente. Se o cliente não estiver associado a uma transação, o contêiner não iniciará uma nova transação antes de executar o método.
+				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o método será executado dentro da transação do method-A. 
+				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o método.
 				> Como o comportamento transacional do método pode variar, você deve usar o atributo Supports com cuidado. 
 			
 			* **Never**
-				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o contêiner lança RemoteException . Se o cliente não estiver associado a uma transação, o contêiner não iniciará uma nova transação antes de executar o método.
+				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança RemoteException. 
+				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o método.
 			
+			* **Never**
 			
-			| Transaction Attribute | Client’s Transaction | Business Method’s Transaction |
+				A tabela abaixo resume os efeitos dos atributos da transação. As transações T1 e T2 são controladas pelo container. Uma transação T1 está associada ao cliente que chama um método no bean da empresa. Na maioria dos casos, o cliente é outro feixe empresarial. Uma transação T2 é iniciada pelo container imediatamente antes da execução do método.
+				A palavra "_None_" significa que o método de negócios não é executado dentro de uma transação controlada pelo container. No entanto, as chamadas de banco de dados em tal método comercial podem ser controladas pelo gerenciador de transações do sistema de gerenciamento de banco de dados. 
+			
+			| Transaction Attribute | method-A do Bean-1 | method-B do Bean-2 |
 			| --- | --- | --- |
 			| Required | None | T2 |
 			| Required | T1 | T1 |
