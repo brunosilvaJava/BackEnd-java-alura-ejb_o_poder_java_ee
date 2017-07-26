@@ -44,25 +44,25 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
          >
          > Considere a seguinte classe:
          >
-         ```java
-         @Service
-         public class MeuServico {
-
-             @Autowired MeuDao meuDao;
-
-             public void acao() {
-                meuDao.atualizarBanco();
-             }
-
-         }
-         ```
+		 >	 ```java
+		 >	 @Service
+		 >	 public class MeuServico {
+		 >
+		 >	     @Autowired MeuDao meuDao;
+		 >
+		 >	     public void acao() {
+		 >			meuDao.atualizarBanco();
+		 >	     }
+		 >
+		 >	 }
+		 >	 ```
          >
          > O que acontece se você criar a classe manualmente?
          >
-         ```java
-         MeuServico meuServico = new MeuServico();
-         meuServico.acao();
-         ```
+		 >	 ```java
+		 >	 MeuServico meuServico = new MeuServico();
+		 >	 meuServico.acao();
+		 >	 ```
          >
          > O resultado será um **```NullPonterException```** na linha **```meuDao.atualizarBanco()```**, pois o atributo meuDao estará nulo.
          > Um objeto normal não é gerenciado pelo Spring.
@@ -77,24 +77,24 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
          > Note que no momento que a instância é criada, não há nada injetado ou inicializado_.
          > Portanto, o código abaixo também resultaria em um NullPointerException:
 	      
-         ```java
-         @Service
-         public class MeuServico {
-
-             @Autowired MeuDao meuDao;
-
-             public MeuServico() {
-                meuDao.iniciarAlgumaCoisaNoBanco();
-             }
-
-         }
-         ```
+		 >	 ```java
+		 >	 @Service
+		 >	 public class MeuServico {
+ 		 >
+		 >	     @Autowired MeuDao meuDao;
+		 >
+		 >	     public MeuServico() {
+		 >		meuDao.iniciarAlgumaCoisaNoBanco();
+		 >	     }
+		 >
+		 >	 }
+		 >	 ```
          > Veja, o Spring não conseguirá injetar meuDao antes de instanciar a classe. 
          Portanto em qualquer framework não é possível injetar a dependência 
          ou fazer qualquer outra coisa na classe antes de chamar algum construtor.
          A solução é usar o pós-construtor, que permite então executar alguma ação logo após a inicialização do Spring, 
          porém antes do sistema executar alguma ação do usuário.
-	 
+	 >
 	 
    * **Thread safety**
 		* Um EJB Session Bean não é compartilhado entre Threads. Ou seja, quando um Session Bean estiver em uso, o EJB Container decide criar mais um Session Bean para atender uma nova chamada. Uma estratégia usada pelos servidores de aplicação para isso é o ***Pooling for Stateless Session EJBs***.
