@@ -114,7 +114,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 	
    * **Session Bean Singleton**
 		* @Singleton -> Especificação EJB 3.1
-		* Garante que haverá somente uma instância do Session Bean
+		* Garante que haverá somente uma instância do Session Bean.
 		* Tipicamente usado para inicializar alguma configuração ou agendar algum serviço, coisas que só fazem sentido no início da aplicação.
 	
    * **Eager Initialization**   
@@ -135,10 +135,41 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 - ### 03 - Integração do JPA com Pool e DataSource ###
 	
-   * **Session Bean Stateful (SBSF)**
-		* Parecido com o objeto HttpSession do mundo de Servlets, é exclusivo do cliente
-		* Pouco usado. Isto porque normalmente se usa o objeto HttpSession para guardar dados do cliente
-		* Não tem pool de conexão
+   * **Configuração**
+   		* Não configurar os dados de conexão no **```persistence.xml```** (JPA). O EJB Container irá disponibilizar um serviço para realizar a conexão.
+		* Uma conexão é feita através de um driver connector, portanto é preciso registrar o driver do banco MySQL como módulo no servidor de aplicação, este módulo consiste de um arquivo XML e um JAR do connector.
+		* Internamente o servidor de aplicação organiza seus módulos em pacotes. Dentro da pasta modules/com criar uma nova pasta mysql e dentro dela uma pasta main. Dentro da pasta main colocar o arquivo XML e o JAR.
+		* No arquivo **```standalone.xml```** informar ao servidor de aplicação o módulo que representa um driver connector, isso é feito no elemento **```<drivers>```**.
+		* A configuração do driver refere-se ao módulo definido anteriormente e fornece um nome para esse driver, além de especificar o nome da classe.
+		```xml
+			<driver name="com.mysql" module="com.mysql">
+			    <xa-datasource-class>
+				com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+			    </xa-datasource-class>
+			</driver>
+		```
+		* Configurar o componente que no JavaEE chamamos de _DataSource_. Em uma aplicação mais robusta, é boa prática utilizar um _pool_ de conexões. Cabe ao _pool_ gerenciar e verificar as conexões disponíveis. Como existem várias implementações de _pool_ no mercado, o JavaEE define um padrão que se chama _DataSource_. Podemos dizer de maneira simplificada que um _DataSource_ é a interface do _pool_ de conexões. Dentro da _tag_ **```<datasources>```**, além da quantidade de conexões para o _pool_, também são configurados os dados da conexão com o banco e o _driver_ responsável. 
+		```xml
+			<datasource jndi-name="java:/livrariaDS" pool-name="livrariaDS" enabled="true" use-java-context="true">
+			    <connection-url>jdbc:mysql://localhost:3306/livraria</connection-url>
+			    <driver>com.mysql</driver>
+			    <pool>
+				<min-pool-size>10</min-pool-size>
+				<max-pool-size>100</max-pool-size>
+				<prefill>true</prefill>
+			    </pool>
+			    <security>
+				<user-name>root</user-name>
+				<password></password>
+			    </security>
+			</datasource>
+		```
+		* No **```persistence.xml```** configurar o endereço do serviço, definido no atributo **```jndi-name```** do **```datasource```**. Para isso, existe a configuração **```<jta-data-source>```**.
+		```xml
+			<jta-data-source>java:/livrariaDS</jta-data-source>
+		```
+   * **@PersistenceContext**
+		* Quando injetamos um EntityManager não podemos utilizar a anotação @Inject. Nesse caso, o Contexts and Dependency Injection (CDI), outra especificação com o foco na injeção de dependência, buscaria o EntityManager. No entanto não encontraria o objeto e causaria uma exceção. Como o EJB Container administrará o JPA, é preciso usar uma anotação especifica do mundo EJB, nesse caso @PersistenceContext.
 
 
 - ### 04 - Gerenciamento de Transações com JTA ###
@@ -147,22 +178,22 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 - ###  05 - Lidando com Exceções ###
 
   * **EJBTransactionRolledbackException**
-  	* causada por System Exception.
+  		* Causada por System Exception.
   
   * **System Exception**
-     * Unchecked
-     * Normalmente exceções de infra-estrutura
-     * Rollback
-     * Invalida o Session Bean e tira ele do Pool de objetos
+		* Unchecked
+		* Normalmente exceções de infra-estrutura
+		* Rollback
+		* Invalida o Session Bean e tira ele do Pool de objetos
      
    * **Application Exception**
-     * Checked
-     * Relacionada ao domínio
-     * Não causa rollback
-     * Não invalida o Session Bean
+		* Checked
+		* Relacionada ao domínio
+		* Não causa rollback
+		* Não invalida o Session Bean
      
-   * **@ApplicationException** 
-   	* Reconfigura o padrão para Application Exceptions.
+   * **@ApplicationException**
+   		* Reconfigura o padrão para Application Exceptions.
 
 - ### 06 - Novos serviços com Interceptadores ###
 
