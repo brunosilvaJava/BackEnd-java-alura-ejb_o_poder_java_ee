@@ -33,7 +33,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
       * @Inject -> Especificação CDI
       
       
-# Versions 3.x.x
+# 02 Ciclo de vida dos Session Beans
 - ### 02 Ciclo de vida dos Session Beans ###
 
    * **Pós-Construtor**
