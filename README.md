@@ -227,12 +227,14 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 				    4. Retoma a transação do method-A após o method-B ser concluído 
 				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container **CRIA** uma transação antes de executar method-B.
+				>
 				> Você deve usar o atributo RequiresNew quando quiser garantir que o método sempre seja executado dentro de uma nova transação. 
 			
 			* **Mandatory**
 				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o method-B será executado dentro da **MESMA** transação do method-A.
 				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança uma **```TransactionRequiredException```**.
+				>
 				> Use o atributo Mandatory se o método do enterprise bean deve usar a transação do cliente.
 			
 			* **NotSupported**
@@ -242,12 +244,14 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 				    4. Retoma a transação do method-A após o method-B ser concluído 
 				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o method-B.
+				>
 				> Use o atributo NotSupported para métodos que não precisam de transações. Como as transações envolvem sobrecarga, esse atributo pode melhorar o desempenho. 
 			
 			* **Supports**
 				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o método será executado dentro da transação do method-A. 
 				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o método.
+				>
 				> Como o comportamento transacional do método pode variar, você deve usar o atributo Supports com cuidado. 
 			
 			* **Never**
