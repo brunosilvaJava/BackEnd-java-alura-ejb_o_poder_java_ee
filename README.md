@@ -10,7 +10,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 ## Aulas
 
 * [01 - Introdução aos Enterprise Java Bean](#01---introdução-aos-enterprise-java-bean-)
-* [02 - Ciclo de vida dos Session Beans](#02-ciclo-de-vida-dos-session-beans-)
+* [02 - Ciclo de vida dos Session Beans](#02---ciclo-de-vida-dos-session-beans-)
 * [03 - Integração do JPA com Pool e DataSource](#03---integração-do-jpa-com-pool-e-datasource-)
 * [04 - Gerenciamento de Transações com JTA](#04---gerenciamento-de-transações-com-jta-)
 * [05 - Lidando com Exceções](#05---lidando-com-exceções-)
