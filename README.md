@@ -19,21 +19,21 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 * [08 - Agendamento e EAR](#08---agendamento-e-ear-)
 
 ### 01 - Introdução aos Enterprise Java Bean [↑](#aulas)
+
+   * **Servidor de Aplicação**
+      * A tarefa de um servidor de aplicações é livrar o desenvolvedor de preocupações como: segurança na aplicação, conecção e persistência das informações no banco de dados, acesso a serviços, etc, e fornecer uma infra-estrutura pronta para que o desenvolvedor possa aproveitar. Ou seja, não é a aplicação que vai gerenciar a transação, a conexão com o banco de dados ou se preocupar com o agendamento de tarefas. A inversão de controle (IoC) faz com que o servidor de aplicação cuide dessas atividades.
     
-    * **Servidor de Aplicação**
-       * A tarefa de um servidor de aplicações é livrar o desenvolvedor de preocupações como: segurança na aplicação, conecção e persistência das informações no banco de dados, acesso a serviços, etc, e fornecer uma infra-estrutura pronta para que o desenvolvedor possa aproveitar. Ou seja, não é a aplicação que vai gerenciar a transação, a conexão com o banco de dados ou se preocupar com o agendamento de tarefas. A inversão de controle (IoC) faz com que o servidor de aplicação cuide dessas atividades.
-   
    * **Session Beans**
-      * Onde geralmente ficam as regras de negócio
+      * Onde geralmente ficam as regras de negócio.
    
    * **JNDI**
-      * Registro de componentes administrados pelo EJB
+      * Registro de componentes administrados pelo EJB.
       
    * **Session Bean Stateless**
       * @Stateless -> Especificação EJB 3.1
-      * Classe EJB econômica
-      * Não mantém estado de conversação com o cliente, é reaproveitado entre clientes
-      * Intercambiáveil e pode ser alocado de um pool
+      * Classe EJB econômica.
+      * Não mantém estado de conversação com o cliente, é reaproveitado entre clientes.
+      * Intercambiáveil e pode ser alocado de um pool.
       
    * **Injeção de dependência**
       * @Inject -> Especificação CDI
