@@ -205,8 +205,60 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 		* É importante ressaltar que o tipo de gerenciamento CONTAINER e o atributo REQUIRED já é o padrão adotado para um Session Bean, então não é necessário configurar. Ou seja, ao testar e republicar a aplicação, tudo deve continuar funcionando.
 	
    * **TransactionAttribute**
-		* Através da anotação @TransactionAttribute, temos acesso a outras configurações: 
-			> MANDATORY
+   
+   		* Um atributo de transação controla o escopo de uma transação. A abaixo ilustra o motivo pelo qual o controle do escopo é importante. No diagrama, o método-A inicia uma transação e então invoca o método-B do Bean-2. Quando o método-B é executado, ele é executado dentro do escopo da transação iniciada pelo método-A, ou ele executa com uma nova transação? A resposta depende do atributo de transação do método-B.
+		
+		![Escopo da transação](http://docs.oracle.com/javaee/6/tutorial/doc/figures/trans-transactionScope.gif)
+		
+		* Através da anotação @TransactionAttribute, é definido o atributo de transação: 
+			
+			* **Required**
+				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o método será executado dentro da transação do cliente. Se o cliente não estiver associado a uma transação, o contêiner iniciará uma nova transação antes de executar o método.
+				> O atributo Obrigatório é o atributo de transação implícito para todos os métodos do bean da empresa em execução com demarcação de transações gerenciadas por contêiner. Normalmente, você não configura o atributo Obrigatório, a menos que seja necessário substituir outro atributo de transação. Como os atributos da transação são declarativos, você pode alterá-los facilmente mais tarde. 
+			
+			* **RequiresNew**
+				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o contêiner segue as seguintes etapas:
+				    1. Suspende a transação do cliente
+				    2. Inicia uma nova transação
+				    3. Delega a chamada para o método
+				    4. Retoma a transação do cliente após o método ser concluído 
+
+				> Se o cliente não estiver associado a uma transação, o contêiner iniciará uma nova transação antes de executar o método.
+				> Você deve usar o atributo RequiresNew quando quiser garantir que o método sempre seja executado dentro de uma nova transação. 
+			
+			* **Mandatory**
+				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o método será executado dentro da transação do cliente. Se o cliente não estiver associado a uma transação, o contêiner lança uma **```TransactionRequiredException```**.
+				> Use o atributo Mandatory se o método do enterprise bean deve usar a transação do cliente.
+			
+			* **NotSupported**
+				> Se o cliente estiver executando dentro de uma transação e invoca o método do bean da empresa, o contêiner suspende a transação do cliente antes de invocar o método. Após o método ter concluído, o contêiner retoma a transação do cliente.
+	Se o cliente não estiver associado a uma transação, o contêiner não iniciará uma nova transação antes de executar o método.
+				> Use o atributo NotSupported para métodos que não precisam de transações. Como as transações envolvem sobrecarga, esse atributo pode melhorar o desempenho. 
+			
+			* **Supports**
+				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o método será executado dentro da transação do cliente. Se o cliente não estiver associado a uma transação, o contêiner não iniciará uma nova transação antes de executar o método.
+				> Como o comportamento transacional do método pode variar, você deve usar o atributo Supports com cuidado. 
+			
+			* **Never**
+				> Se o cliente estiver sendo executado dentro de uma transação e invoca o método do enterprise bean, o contêiner lança RemoteException . Se o cliente não estiver associado a uma transação, o contêiner não iniciará uma nova transação antes de executar o método.
+			
+			
+			| Transaction Attribute | Client’s Transaction | Business Method’s Transaction |
+			| --- | --- | --- |
+			| Required | None | T2 |
+			| Required | T1 | T1 |
+			| RequiresNew | None | T2 |
+			| RequiresNew | T1 | T2 |
+			| Mandatory | None | Error |
+			| Mandatory | T1 | T1 |
+			| NotSupported | None | None |
+			| NotSupported | T1 | None |
+			| Supports | None | None |
+			| Supports | T1 | T1 |
+			| Never | None | None |
+			| Never | T1 | Error |
+	
+   * [**Para saber mais** - Container-Managed Transactions](http://docs.oracle.com/javaee/6/tutorial/doc/bncij.html)
 
 ###  05 - Lidando com Exceções [↑](#aulas)
 
