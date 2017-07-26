@@ -36,14 +36,14 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
    * **Pós-Construtor**
       * ~~Assim que o EJB Container cria e inicializa o Session Bean, o método anotado com @PostConstruct é executado~~. Esse tipo de método ligado ao ciclo de vida do Session Bean também é chamado de Callback. _Na verdade não é bem assim..._
       * [**Para saber mais**](https://pt.stackoverflow.com/questions/58403/qual-a-diferen%C3%A7a-entre-postconstruct-e-o-construtor):
-         Ao usar frameworks que gerenciam o ciclo de vida de suas classes, como é o caso do Spring, 
+         > Ao usar frameworks que gerenciam o ciclo de vida de suas classes, como é o caso do Spring, 
          é sempre importante entender que uma instância gerenciada pelo framework não é uma instância qualquer.
          Uma instância gerenciada pelo Spring é chamda de Spring Bean e não é um objeto comum. Ele agora tem 'superpoderes'.
-         
-         ***Instância Comum vs. Spring Bean***
-         
-         Considere a seguinte classe:
-         
+         >
+         > ***Instância Comum vs. Spring Bean***
+         >
+         > Considere a seguinte classe:
+         >
          ```java
          @Service
          public class MeuServico {
@@ -56,26 +56,26 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
          }
          ```
-         
-         O que acontece se você criar a classe manualmente?
-         
+         >
+         > O que acontece se você criar a classe manualmente?
+         >
          ```java
          MeuServico meuServico = new MeuServico();
          meuServico.acao();
          ```
-         
-         O resultado será um **```NullPonterException```** na linha **```meuDao.atualizarBanco()```**, pois o atributo meuDao estará nulo.
-         Um objeto normal não é gerenciado pelo Spring.
+         >
+         > O resultado será um **```NullPonterException```** na linha **```meuDao.atualizarBanco()```**, pois o atributo meuDao estará nulo.
+         > Um objeto normal não é gerenciado pelo Spring.
          Então, sempre que usar um Spring Bean você deve deixar o Spring lhe entregar a instância, 
          seja através de uma anotação, injeção através de XML, etc.
-         
-         ***Construtor vs. Pós-Construtor***
-         
-         Quando o Spring inicia o contexto (Spring Context), que contém todos os beans, 
+         >
+         > ***Construtor vs. Pós-Construtor***
+         >
+         > Quando o Spring inicia o contexto (Spring Context), que contém todos os beans, 
          ele cria instâncias dos beans anotados ou declarados na configuração, processa as anotações, injeta as dependências e algumas coisas a mais.
-         _Após inicializar corretamente tudo, ele chama o método que esteja anotado com @PostConstruct.
-         Note que no momento que a instância é criada, não há nada injetado ou inicializado_.
-         Portanto, o código abaixo também resultaria em um NullPointerException:
+         > _Após inicializar corretamente tudo, ele chama o método que esteja anotado com @PostConstruct.
+         > Note que no momento que a instância é criada, não há nada injetado ou inicializado_.
+         > Portanto, o código abaixo também resultaria em um NullPointerException:
 	      
          ```java
          @Service
@@ -89,12 +89,13 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
          }
          ```
-         Veja, o Spring não conseguirá injetar meuDao antes de instanciar a classe. 
+         > Veja, o Spring não conseguirá injetar meuDao antes de instanciar a classe. 
          Portanto em qualquer framework não é possível injetar a dependência 
          ou fazer qualquer outra coisa na classe antes de chamar algum construtor.
          A solução é usar o pós-construtor, que permite então executar alguma ação logo após a inicialização do Spring, 
          porém antes do sistema executar alguma ação do usuário.
-
+	 
+	 
    * **Thread safety**
 		* Um EJB Session Bean não é compartilhado entre Threads. Ou seja, quando um Session Bean estiver em uso, o EJB Container decide criar mais um Session Bean para atender uma nova chamada. Uma estratégia usada pelos servidores de aplicação para isso é o ***Pooling for Stateless Session EJBs***.
       
@@ -134,23 +135,35 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 
 - ### 03 - Integração do JPA com Pool e DataSource ###
+	
+   * **Session Bean Stateful (SBSF)**
+		* Parecido com o objeto HttpSession do mundo de Servlets, é exclusivo do cliente
+		* Pouco usado. Isto porque normalmente se usa o objeto HttpSession para guardar dados do cliente
+		* Não tem pool de conexão
+
 
 - ### 04 - Gerenciamento de Transações com JTA ###
 
+
 - ###  05 - Lidando com Exceções ###
 
-  * EJBTransactionRolledbackException causada por System Exception.
-  * System Exception
+  * **EJBTransactionRolledbackException**
+  	* causada por System Exception.
+  
+  * **System Exception**
      * Unchecked
      * Normalmente exceções de infra-estrutura
      * Rollback
      * Invalida o Session Bean e tira ele do Pool de objetos
-   * Application Exception
+     
+   * **Application Exception**
      * Checked
      * Relacionada ao domínio
      * Não causa rollback
      * Não invalida o Session Bean
-   * @ApplicationException reconfigura o padrão para Application Exceptions.
+     
+   * **@ApplicationException** 
+   	* Reconfigura o padrão para Application Exceptions.
 
 - ### 06 - Novos serviços com Interceptadores ###
 
@@ -158,6 +171,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
      * Anotação para informar o método interceptador
      * Método interceptador retorna Object
      * Método recebe como parâmetro InvocationContext, este contém informações do método interceptado e o método proceed que prossegue com a execução do método interceptado e retorna o mesmo que ele
+     
    * @Interceptors
      * Anotação para informar qual classe terá seus métodos interceptados, ou qual método.
      * Recebe um Array de classes interceptadoras
