@@ -211,7 +211,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 	
    * **TransactionAttribute**
    
-   		* Um atributo de transação controla o escopo de uma transação. A abaixo ilustra o motivo pelo qual o controle do escopo é importante. No diagrama, o método-A inicia uma transação e então invoca o método-B do Bean-2. Quando o método-B é executado, ele é executado dentro do escopo da transação iniciada pelo método-A, ou ele executa com uma nova transação? A resposta depende do atributo de transação do método-B.
+   		* Um atributo de transação controla o escopo de uma transação. A figura abaixo ilustra o motivo pelo qual o controle do escopo é importante. No diagrama, o método-A inicia uma transação e então invoca o método-B do Bean-2. Quando o método-B é executado, ele é executado dentro do escopo da transação iniciada pelo método-A, ou ele executa com uma nova transação? A resposta depende do atributo de transação do método-B.
 		
 		![Escopo da transação](http://docs.oracle.com/javaee/6/tutorial/doc/figures/trans-transactionScope.gif)
 		
@@ -353,7 +353,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 	* [Para saber mais](http://docs.oracle.com/javaee/6/api/javax/ejb/Schedule.html)
 
   * **EAR** 
-  	* Funciona um container. Esse tipo de arquivo é chamado Enterprise Archive, ou simples EAR.
+  	* Funciona como um container. Esse tipo de arquivo é chamado Enterprise Archive, ou simples EAR.
 	* Um EAR é apenas um projeto ou arquivo que agrupa vários outros projetos.
 	* Assim temos uma unidade de deploy ao invés de publicar cada módulo isoladamente.
 	* Projeto do tipo Enterprise Application Project do eclipse.
