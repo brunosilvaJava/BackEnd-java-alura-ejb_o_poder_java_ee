@@ -18,7 +18,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 * [07 - Integração com Web Services](#07---integração-com-web-services)
 * [08 - Agendamento e EAR](#08---agendamento-e-ear)
 
-- ### 01 - Introdução aos Enterprise Java Bean [↑](#aulas)
+- ### 01 - Introdução aos Enterprise Java Bean  [↑](#aulas)
     
     * **Servidor de Aplicação**
        * A tarefa de um servidor de aplicações é livrar o desenvolvedor de preocupações como: segurança na aplicação, conecção e persistência das informações no banco de dados, acesso a serviços, etc, e fornecer uma infra-estrutura pronta para que o desenvolvedor possa aproveitar. Ou seja, não é a aplicação que vai gerenciar a transação, a conexão com o banco de dados ou se preocupar com o agendamento de tarefas. A inversão de controle (IoC) faz com que o servidor de aplicação cuide dessas atividades.
