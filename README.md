@@ -83,7 +83,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 		 >	     @Autowired MeuDao meuDao;
 		 >
 		 >	     public MeuServico() {
-		 >		meuDao.iniciarAlgumaCoisaNoBanco();
+		 >			meuDao.iniciarAlgumaCoisaNoBanco();
 		 >	     }
 		 >
 		 >	 }
