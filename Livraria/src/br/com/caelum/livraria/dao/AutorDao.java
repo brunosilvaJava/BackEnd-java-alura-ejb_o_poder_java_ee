@@ -4,12 +4,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
-import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.com.caelum.livraria.exception.LivrariaException;
-import br.com.caelum.livraria.interceptador.LogInterceptador;
 import br.com.caelum.livraria.modelo.Autor;
 
 /*
