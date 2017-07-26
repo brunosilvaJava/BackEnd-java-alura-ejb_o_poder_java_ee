@@ -231,6 +231,7 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 			
 			* **Mandatory**
 				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o method-B será executado dentro da **MESMA** transação do method-A.
+				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança uma **```TransactionRequiredException```**.
 				> Use o atributo Mandatory se o método do enterprise bean deve usar a transação do cliente.
 			
@@ -239,39 +240,42 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 				    1. Suspende a transação do method-A
 				    2. Delega a chamada para o method-B, sem abrir uma transação
 				    4. Retoma a transação do method-A após o method-B ser concluído 
+				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o method-B.
 				> Use o atributo NotSupported para métodos que não precisam de transações. Como as transações envolvem sobrecarga, esse atributo pode melhorar o desempenho. 
 			
 			* **Supports**
 				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o método será executado dentro da transação do method-A. 
+				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o método.
 				> Como o comportamento transacional do método pode variar, você deve usar o atributo Supports com cuidado. 
 			
 			* **Never**
 				> **a.** Se o container **CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container lança RemoteException. 
+				>
 				> **b.** Se o container **NÃO CRIOU** uma transação para o method-A do Bean-1 e este invoca o method-B do Bean-2, o container não iniciará uma nova transação antes de executar o método.
 			
-			* **Never**
+			* **Resumo dos atributos de transação**
 			
 				A tabela abaixo resume os efeitos dos atributos da transação. As transações T1 e T2 são controladas pelo container. Uma transação T1 está associada ao cliente que chama um método no bean da empresa. Na maioria dos casos, o cliente é outro feixe empresarial. Uma transação T2 é iniciada pelo container imediatamente antes da execução do método.
 				A palavra "_None_" significa que o método de negócios não é executado dentro de uma transação controlada pelo container. No entanto, as chamadas de banco de dados em tal método comercial podem ser controladas pelo gerenciador de transações do sistema de gerenciamento de banco de dados. 
 			
-			| Transaction Attribute | method-A do Bean-1 | method-B do Bean-2 |
-			| --- | --- | --- |
-			| Required | None | T2 |
-			| Required | T1 | T1 |
-			| RequiresNew | None | T2 |
-			| RequiresNew | T1 | T2 |
-			| Mandatory | None | Error |
-			| Mandatory | T1 | T1 |
-			| NotSupported | None | None |
-			| NotSupported | T1 | None |
-			| Supports | None | None |
-			| Supports | T1 | T1 |
-			| Never | None | None |
-			| Never | T1 | Error |
+				| Transaction Attribute | method-A do Bean-1 | method-B do Bean-2 |
+				| --- | --- | --- |
+				| Required | None | T2 |
+				| Required | T1 | T1 |
+				| RequiresNew | None | T2 |
+				| RequiresNew | T1 | T2 |
+				| Mandatory | None | Error |
+				| Mandatory | T1 | T1 |
+				| NotSupported | None | None |
+				| NotSupported | T1 | None |
+				| Supports | None | None |
+				| Supports | T1 | T1 |
+				| Never | None | None |
+				| Never | T1 | Error |
 	
-   * [**Para saber mais** - Container-Managed Transactions](http://docs.oracle.com/javaee/6/tutorial/doc/bncij.html)
+   			* [**Para saber mais** - Container-Managed Transactions](http://docs.oracle.com/javaee/6/tutorial/doc/bncij.html)
 
 ###  05 - Lidando com Exceções [↑](#aulas)
 
