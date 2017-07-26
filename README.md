@@ -326,6 +326,35 @@ Trata-se de um cadastro de livros e autores, com abas para cada funcionalidade a
 
 ### 07 - Integração com Web Services [↑](#aulas)
 
+  * **Padrão JAX-WS** 
+  	* O EJB usa o JAX-WS para publicar os Web Services. 
+
 =======================================================
 
 ### 08 - Agendamento e EAR [↑](#aulas)
+
+  * **Apenas uma instância** 
+  	* @Singleton - Para agendar a execução não precisamos de um pool. Não faz sentido configurar o agendamento várias vezes, o que poderia até causar problemas. Por isso utilizaremos @Singleton no lugar de @Stateless. 
+
+  * **Iniciar com a aplicação** 
+  	* @Startup - Agendamento começa assim que a aplicação é iniciada.
+
+  * **Método com chamada periódica** 
+  	* Não precisa ser público.
+	* @Schedule - Possui vários atributos que definem o agendamento exato, ou seja, configuram o dia, mês, hora, etc. 
+	* Todo agendamento é persistido automaticamente. É obrigação do container EJB recuperar um agendamento caso o servidor tenha caído, por isso ele grava suas configurações. Podemos desabilitar isso através do atributo persistent=false.
+	* Exemplo de método para ser executado a cada 10 segundos:
+		```java
+		@Schedule(hour="*", minute="*", second="*/10", persistent=false)    
+		void metodoAgendado() {
+			...
+		}
+		```
+	* [Para saber mais](http://docs.oracle.com/javaee/6/api/javax/ejb/Schedule.html)
+
+  * **EAR** 
+  	* Funciona um container. Esse tipo de arquivo é chamado Enterprise Archive, ou simples EAR.
+	* Um EAR é apenas um projeto ou arquivo que agrupa vários outros projetos.
+	* Assim temos uma unidade de deploy ao invés de publicar cada módulo isoladamente.
+	* Projeto do tipo Enterprise Application Project do eclipse.
+	
